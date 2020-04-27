@@ -11,3 +11,52 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,600,700');
+
+.grid-container {
+  display: grid;
+  grid-template-columns: 20% 1fr;
+  grid-template-rows: 72px 1fr;
+
+  grid-template-areas:
+    'sidebar head head head'
+    'sidebar main main main'
+    'sidebar main main main'
+    'sidebar main main main';
+
+  /* grid-container height = 100% of viewport height */
+  height: 100vh;
+}
+
+.grid-sidebar {
+  grid-area: sidebar;
+}
+.header {
+  grid-area: head;
+  box-shadow: 0 1px 0 0 #eaedf3;
+}
+.content {
+  grid-area: main;
+}
+
+.pane {
+  background: #fff;
+  border-style: solid;
+  border-color: #fff;
+  border-width: 1px;
+  margin-top: 5px;
+  margin-left: 5px;
+  margin-right: 5px;
+  border-radius: 5px;
+  /* box-shadow: 2px 2px 2px #dddddd; */
+}
+
+@media screen and (max-width: 375px) {
+  .grid-container {
+    grid-template-columns: 1fr;
+    grid-template-rows: 72px 1fr;
+    grid-template-areas:
+      'head'
+      'main';
+  }
+}
