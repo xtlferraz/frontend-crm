@@ -20,6 +20,23 @@ const appMenuItems = [
     Icon: IconDashboard,
   },
   {
+    name: 'Cadastros',
+    Icon: IconLibraryBooks,
+    items: [
+      {
+        name: 'Pessoas',
+        items: [
+          {
+            name: 'Física',
+          },
+          {
+            name: 'Jurídica',
+          },
+        ],
+      },
+    ],
+  },
+  {
     name: 'Pessoa Jurídica',
     link: '/company',
     Icon: BusinessIcon,
@@ -63,23 +80,6 @@ const appMenuItems = [
     name: 'Reports',
     link: '/reports',
     Icon: IconBarChart,
-  },
-  {
-    name: 'Cadastros',
-    Icon: IconLibraryBooks,
-    items: [
-      {
-        name: 'Pessoas',
-        items: [
-          {
-            name: 'Física',
-          },
-          {
-            name: 'Jurídica',
-          },
-        ],
-      },
-    ],
   },
 ];
 

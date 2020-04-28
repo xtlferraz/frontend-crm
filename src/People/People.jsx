@@ -14,7 +14,6 @@ const People = () => {
     {
       title: 'Data de Nascimento',
       field: 'dtNascimento',
-      editable: 'onUpdate',
     },
     { title: 'Sexo', field: 'sexo' },
     { title: 'E-mail', field: 'email' },
@@ -29,7 +28,7 @@ const People = () => {
   return (
     <>
       <MaterialTable
-        title="Pessoas"
+        title="Físicas"
         columns={columns}
         data={peoples.items}
         editable={{
