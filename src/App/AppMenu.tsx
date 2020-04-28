@@ -1,8 +1,5 @@
 import React from 'react';
-import { makeStyles, createStyles } from '@material-ui/core/styles';
-
 import List from '@material-ui/core/List';
-
 import IconDashboard from '@material-ui/icons/Dashboard';
 import IconPeople from '@material-ui/icons/People';
 import IconBarChart from '@material-ui/icons/BarChart';
@@ -68,20 +65,17 @@ const appMenuItems = [
     Icon: IconBarChart,
   },
   {
-    name: 'Nested Pages',
+    name: 'Cadastros',
     Icon: IconLibraryBooks,
     items: [
       {
-        name: 'Level 2',
-      },
-      {
-        name: 'Level 2',
+        name: 'Pessoas',
         items: [
           {
-            name: 'Level 3',
+            name: 'Física',
           },
           {
-            name: 'Level 3',
+            name: 'Jurídica',
           },
         ],
       },
@@ -90,35 +84,13 @@ const appMenuItems = [
 ];
 
 const AppMenu: React.FC = () => {
-  const classes = useStyles();
-
   return (
-    <List component="nav" className={classes.appMenu} disablePadding>
-      {/* <AppMenuItem {...appMenuItems[0]} /> */}
+    <List component="nav" disablePadding>
       {appMenuItems.map((item, index) => (
         <AppMenuItem {...item} key={index} />
       ))}
     </List>
   );
 };
-
-const drawerWidth = 240;
-
-const useStyles = makeStyles((theme) =>
-  createStyles({
-    appMenu: {
-      width: '100%',
-    },
-    navList: {
-      width: drawerWidth,
-    },
-    menuItem: {
-      width: drawerWidth,
-    },
-    menuItemIcon: {
-      color: '#97c05c',
-    },
-  })
-);
 
 export default AppMenu;

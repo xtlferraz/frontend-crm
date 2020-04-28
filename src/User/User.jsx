@@ -9,9 +9,9 @@ const User = () => {
 
   const columns = [
     { title: 'ID', field: 'id', editable: 'never' },
-    { title: 'Nome', field: 'name', editable: 'onUpdate' },
-    { title: 'E-Mail', field: 'email', editable: 'onUpdate' },
-    { title: 'Password', field: 'password', editable: 'onUpdate' },
+    { title: 'Nome', field: 'name' },
+    { title: 'E-Mail', field: 'email' },
+    { title: 'Password', field: 'password' },
   ];
 
   useEffect(() => {

@@ -9,9 +9,9 @@ const Category = () => {
 
   const columns = [
     { title: 'ID', field: 'id', editable: 'never' },
-    { title: 'Nome', field: 'name', editable: 'onUpdate' },
-    { title: 'Descrição', field: 'description', editable: 'onUpdate' },
-    { title: 'Ative', field: 'active', editable: 'onUpdate' },
+    { title: 'Nome', field: 'name' },
+    { title: 'Descrição', field: 'description' },
+    { title: 'Ative', field: 'active' },
   ];
 
   useEffect(() => {

@@ -9,17 +9,17 @@ const People = () => {
 
   const columns = [
     { title: 'ID', field: 'id', editable: 'never' },
-    { title: 'Nome', field: 'name', editable: 'onUpdate' },
-    { title: 'CPF', field: 'cpf', editable: 'onUpdate' },
+    { title: 'Nome', field: 'name' },
+    { title: 'CPF', field: 'cpf' },
     {
       title: 'Data de Nascimento',
       field: 'dtNascimento',
       editable: 'onUpdate',
     },
-    { title: 'Sexo', field: 'sexo', editable: 'onUpdate' },
-    { title: 'E-mail', field: 'email', editable: 'onUpdate' },
-    { title: 'Usuário', field: 'user_id', editable: 'onUpdate' },
-    { title: 'Ativo', field: 'active', editable: 'onUpdate' },
+    { title: 'Sexo', field: 'sexo' },
+    { title: 'E-mail', field: 'email' },
+    { title: 'Usuário', field: 'user_id' },
+    { title: 'Ativo', field: 'active' },
   ];
 
   useEffect(() => {

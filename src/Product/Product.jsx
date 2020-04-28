@@ -9,12 +9,12 @@ const Product = () => {
 
   const columns = [
     { title: 'ID', field: 'id', editable: 'never' },
-    { title: 'Nome', field: 'name', editable: 'onUpdate' },
-    { title: 'Descrição', field: 'description', editable: 'onUpdate' },
-    { title: 'Image', field: 'image', editable: 'onUpdate' },
-    { title: 'Value', field: 'value', editable: 'onUpdate' },
-    { title: 'Categoria', field: 'category_id', editable: 'onUpdate' },
-    { title: 'Ativo', field: 'active', editable: 'onUpdate' },
+    { title: 'Nome', field: 'name' },
+    { title: 'Descrição', field: 'description' },
+    { title: 'Image', field: 'image' },
+    { title: 'Value', field: 'value' },
+    { title: 'Categoria', field: 'category_id' },
+    { title: 'Ativo', field: 'active' },
   ];
 
   useEffect(() => {

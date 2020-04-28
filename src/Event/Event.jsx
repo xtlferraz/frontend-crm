@@ -9,11 +9,11 @@ const Event = () => {
 
   const columns = [
     { title: 'ID', field: 'id', editable: 'never' },
-    { title: 'Nome', field: 'name', editable: 'onUpdate' },
-    { title: 'Descrição', field: 'description', editable: 'onUpdate' },
-    { title: 'Data de Inclusão', field: 'date_include', editable: 'onUpdate' },
-    { title: 'Equipe', field: 'team_id', editable: 'onUpdate' },
-    { title: 'Ativo', field: 'active', editable: 'onUpdate' },
+    { title: 'Nome', field: 'name' },
+    { title: 'Descrição', field: 'description' },
+    { title: 'Data de Inclusão', field: 'date_include' },
+    { title: 'Equipe', field: 'team_id' },
+    { title: 'Ativo', field: 'active' },
   ];
 
   useEffect(() => {

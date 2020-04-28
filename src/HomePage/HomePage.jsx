@@ -18,7 +18,7 @@ function HomePage() {
     <Container maxWidth="sm">
       <Box my={4}>
         <Typography variant="h4" component="h1" gutterBottom>
-          <h1>Olá {user.name}!</h1>
+          <>Olá {user.name}!</>
         </Typography>
       </Box>
     </Container>

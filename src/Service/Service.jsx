@@ -9,12 +9,12 @@ const Service = () => {
 
   const columns = [
     { title: 'ID', field: 'id', editable: 'never' },
-    { title: 'Nome', field: 'name', editable: 'onUpdate' },
-    { title: 'Descrição', field: 'description', editable: 'onUpdate' },
-    { title: 'Hora', field: 'time_hour', editable: 'onUpdate' },
-    { title: 'Valor', field: 'value_hour', editable: 'onUpdate' },
-    { title: 'Categoria', field: 'category_id', editable: 'onUpdate' },
-    { title: 'Ativo', field: 'active', editable: 'onUpdate' },
+    { title: 'Nome', field: 'name' },
+    { title: 'Descrição', field: 'description' },
+    { title: 'Hora', field: 'time_hour' },
+    { title: 'Valor', field: 'value_hour' },
+    { title: 'Categoria', field: 'category_id' },
+    { title: 'Ativo', field: 'active' },
   ];
 
   useEffect(() => {

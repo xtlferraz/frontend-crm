@@ -9,10 +9,10 @@ const Team = () => {
 
   const columns = [
     { title: 'ID', field: 'id', editable: 'never' },
-    { title: 'Nome', field: 'name', editable: 'onUpdate' },
-    { title: 'Descrição', field: 'description', editable: 'onUpdate' },
-    { title: 'Pessoal', field: 'people_id', editable: 'onUpdate' },
-    { title: 'Ativo', field: 'active', editable: 'onUpdate' },
+    { title: 'Nome', field: 'name' },
+    { title: 'Descrição', field: 'description' },
+    { title: 'Pessoal', field: 'people_id' },
+    { title: 'Ativo', field: 'active' },
   ];
 
   useEffect(() => {

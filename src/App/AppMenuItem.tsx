@@ -51,7 +51,7 @@ const AppMenuItem: React.FC<AppMenuItemProps> = (props) => {
     >
       {/* Display an icon if any */}
       {!!Icon && (
-        <ListItemIcon className={classes.menuItemIcon}>
+        <ListItemIcon>
           <Icon />
         </ListItemIcon>
       )}
@@ -87,7 +87,7 @@ const useStyles = makeStyles((theme) =>
       '&.active': {
         background: 'rgba(0, 0, 0, 0.08)',
         '& .MuiListItemIcon-root': {
-          color: '#fff',
+          color: '#3F51B5',
         },
       },
     },

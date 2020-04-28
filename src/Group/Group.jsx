@@ -9,9 +9,9 @@ const Group = () => {
 
   const columns = [
     { title: 'ID', field: 'id', editable: 'never' },
-    { title: 'Nome', field: 'name', editable: 'onUpdate' },
-    { title: 'Permissão', field: 'role', editable: 'onUpdate' },
-    { title: 'Usuário', field: 'user_id', editable: 'onUpdate' },
+    { title: 'Nome', field: 'name' },
+    { title: 'Permissão', field: 'role' },
+    { title: 'Usuário', field: 'user_id' },
   ];
 
   useEffect(() => {
