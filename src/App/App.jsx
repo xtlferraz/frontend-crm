@@ -27,7 +27,6 @@ import { Service } from '../Service';
 import { Team } from '../Team';
 
 const HomePageLayout = ({ children }) => {
-  const classes = useStyles();
   return (
     <div className="App">
       <header className="App-header">{children}</header>
