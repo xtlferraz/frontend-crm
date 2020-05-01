@@ -30,11 +30,7 @@ const HomePageLayout = ({ children }) => {
   const classes = useStyles();
   return (
     <div className="App">
-      <header className="App-header">
-        <Container maxWidth="lg" className={classes.container}>
-          {children}
-        </Container>
-      </header>
+      <header className="App-header">{children}</header>
     </div>
   );
 };
