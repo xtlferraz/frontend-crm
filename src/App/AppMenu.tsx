@@ -28,9 +28,11 @@ const appMenuItems = [
         items: [
           {
             name: 'Física',
+            link: '/people',
           },
           {
             name: 'Jurídica',
+            link: '/company',
           },
         ],
       },
