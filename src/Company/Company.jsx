@@ -56,7 +56,7 @@ const Company = () => {
             new Promise((resolve) => {
               setTimeout(() => {
                 resolve();
-                if (company.name && company.email) {
+                if (company.name) {
                   dispatch(companyActions.update(company));
                 }
                 dispatch(companyActions.getAll());

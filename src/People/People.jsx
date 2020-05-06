@@ -57,7 +57,7 @@ const People = () => {
             new Promise((resolve) => {
               setTimeout(() => {
                 resolve();
-                if (people.name && people.email) {
+                if (people.name) {
                   dispatch(peopleActions.update(people));
                 }
                 dispatch(peopleActions.getAll());
