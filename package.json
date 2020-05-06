@@ -5,6 +5,7 @@
   "dependencies": {
     "@material-ui/core": "^4.9.11",
     "@material-ui/icons": "^4.9.1",
+    "@material-ui/lab": "^4.0.0-alpha.52",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
@@ -31,8 +32,8 @@
     "styled-components": "^5.1.0"
   },
   "scripts": {
-    "start": "node server.js",
-    "dev": "react-scripts start",
+    "start": "react-scripts start",
+    "dev": "node server.js",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",

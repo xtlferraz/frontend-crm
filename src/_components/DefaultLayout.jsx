@@ -14,6 +14,10 @@ import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import Divider from '@material-ui/core/Divider';
 import AppMenu from '../App/AppMenu';
+import PrimarySearchAppBar from './PrimarySearchAppBar';
+import { useHistory } from 'react-router-dom';
+import Alert from '@material-ui/lab/Alert';
+
 const drawerWidth = 240;
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -70,14 +74,22 @@ const useStyles = makeStyles((theme) => ({
     }),
     marginLeft: 0,
   },
+  alertNotification: {
+    width: '100%',
+    '& > * + *': {
+      marginTop: theme.spacing(2),
+    },
+  },
 }));
 
 const DefaultLayout = ({ children }) => {
   const classes = useStyles();
   const alert = useSelector((state) => state.alert);
+  const user = useSelector((state) => state.authentication.user);
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
-
+  const history = useHistory();
+  if (!user) history.push('/login');
   const handleDrawerOpen = () => {
     setOpen(true);
   };
@@ -108,6 +120,7 @@ const DefaultLayout = ({ children }) => {
           <Typography variant="h6" noWrap>
             IC WORK
           </Typography>
+          <PrimarySearchAppBar />
         </Toolbar>
       </AppBar>
       <Drawer
@@ -120,7 +133,9 @@ const DefaultLayout = ({ children }) => {
         }}
       >
         <div className={classes.drawerHeader}>
+          {user.name}
           <IconButton onClick={handleDrawerClose}>
+            {' '}
             {theme.direction === 'ltr' ? (
               <ChevronLeftIcon />
             ) : (
@@ -141,6 +156,7 @@ const DefaultLayout = ({ children }) => {
           {alert.message && (
             <div className={`alert ${alert.type}`}>{alert.message}</div>
           )}
+
           {children}
         </Container>
       </main>

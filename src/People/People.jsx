@@ -2,10 +2,23 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { peopleActions } from '../_actions';
 import MaterialTable from 'material-table';
-
+import FisicaDialog from '../_components/FisicaDialog';
+import { useHistory } from 'react-router-dom';
 const People = () => {
   const peoples = useSelector((state) => state.peoples);
   const dispatch = useDispatch();
+  const history = useHistory();
+
+  const [open, setOpen] = React.useState(false);
+
+  const handleClose = () => {
+    setOpen(false);
+    history.push('/people');
+  };
+
+  const handleClick = () => {
+    setOpen(true);
+  };
 
   const columns = [
     { title: 'ID', field: 'id', editable: 'never' },
@@ -31,17 +44,15 @@ const People = () => {
         title="Físicas"
         columns={columns}
         data={peoples.items}
+        actions={[
+          {
+            icon: 'add',
+            tooltip: 'Add Pessoa',
+            isFreeAction: true,
+            onClick: () => handleClick(),
+          },
+        ]}
         editable={{
-          onRowAdd: (people) =>
-            new Promise((resolve) => {
-              setTimeout(() => {
-                resolve();
-                if (people.name && people.email) {
-                  dispatch(peopleActions.register(people));
-                }
-                dispatch(peopleActions.getAll());
-              }, 600);
-            }),
           onRowUpdate: (people) =>
             new Promise((resolve) => {
               setTimeout(() => {
@@ -61,6 +72,7 @@ const People = () => {
             }),
         }}
       />
+      <FisicaDialog open={open} close={handleClose}></FisicaDialog>
     </>
   );
 };

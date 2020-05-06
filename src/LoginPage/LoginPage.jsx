@@ -78,7 +78,7 @@ const LoginPage = () => {
 
   // reset login status
   useEffect(() => {
-    dispatch(userActions.logout());
+    //dispatch(userActions.logout());
   }, [dispatch]);
 
   const handleChange = (e) => {
@@ -136,7 +136,6 @@ const LoginPage = () => {
               label="Password"
               type="password"
               id="password"
-              type="password"
               value={password}
               onChange={handleChange}
               className={
