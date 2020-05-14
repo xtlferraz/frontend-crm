@@ -19,7 +19,7 @@ import { Category } from '../Category';
 import { Company } from '../Company';
 import { Event } from '../Event';
 import { Group } from '../Group';
-import { People } from '../People';
+import { People, EditPeople } from '../People';
 import { Product } from '../Product';
 import { Service } from '../Service';
 import { Team } from '../Team';
@@ -77,6 +77,7 @@ const App = () => {
           <PrivateRoute exact path="/service" component={Service} />
           <PrivateRoute exact path="/team" component={Team} />
           <PrivateRoute exact path="/people" component={People} />
+          <PrivateRoute exact path="/people/edit" component={EditPeople} />
           <PrivateRoute exact path="/lead" component={Lead} />
           <PrivateRoute exact path="/user" component={User} />
           <Redirect from="*" to="/" />
