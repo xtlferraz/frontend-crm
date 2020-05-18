@@ -16,7 +16,7 @@ import { RegisterPage } from '../RegisterPage';
 import { User } from '../User';
 import { Lead } from '../Lead';
 import { Category } from '../Category';
-import { Company } from '../Company';
+import { Company,EditCompany } from '../Company';
 import { Event } from '../Event';
 import { Group } from '../Group';
 import { People, EditPeople } from '../People';
@@ -71,6 +71,7 @@ const App = () => {
           />
           <PrivateRoute exact path="/category" component={Category} />
           <PrivateRoute exact path="/company" component={Company} />
+          <PrivateRoute exact path="/company/edit" component={EditCompany} />
           <PrivateRoute exact path="/event" component={Event} />
           <PrivateRoute exact path="/group" component={Group} />
           <PrivateRoute exact path="/product" component={Product} />

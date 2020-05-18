@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { peopleActions } from '../_actions';
+import { companyActions } from '../_actions';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
@@ -59,17 +59,18 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const EditPeople = () => {
-  const peoples = useSelector((state) => state.peoples);
+const EditCompany = () => {
+  const companys = useSelector((state) => state.companys);
   const dispatch = useDispatch();
 
   const classes = useStyles();
   const [value, setValue] = React.useState(0);
-  const [people, setPeople] = useState({
+  const [company, setCompany] = useState({
     name: '',
-    short_name: '',
-    cpf: '',
+    fantasy_name: '',
+    cnpj: '',
   });
+
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -77,11 +78,11 @@ const EditPeople = () => {
 
   function handleChangeInput(e) {
     const { name, value } = e.target;
-    setPeople((people) => ({ ...people, [name]: value }));
+    setCompany((company) => ({ ...company, [name]: value }));
   }
 
   useEffect(() => {
-    dispatch(peopleActions.getAll());
+    dispatch(companyActions.getAll());
   }, []);
 
   return (
@@ -97,11 +98,11 @@ const EditPeople = () => {
           scrollButtons="auto"
           aria-label="scrollable auto tabs example"
         >
-          <Tab label="Pessoa" {...a11yProps(0)} />
+          <Tab label="Empresa" {...a11yProps(0)} />
           <Tab label="Endereço" {...a11yProps(1)} />
           <Tab label="Documentos" {...a11yProps(2)} />
           <Tab label="Perfil" {...a11yProps(3)} />
-          <Tab label="Foto" {...a11yProps(4)} />
+          <Tab label="Logo" {...a11yProps(4)} />
         </Tabs>
       </AppBar>
       <TabPanel value={value} index={0}>
@@ -114,29 +115,27 @@ const EditPeople = () => {
           label="Nome"
           type="text"
           onChange={handleChangeInput}
-          value={people.name}
+          value={company.name}
           fullWidth
         />
-
         <TextField
-          name="short_name"
+          name="cnpj"
           margin="dense"
-          id="short_name"
-          label="Nome Curto"
-          type="text"
+          id="cnpj"
+          label="CNPJ"
           onChange={handleChangeInput}
-          value={people.short_name}
+          value={company.cnpj}
+          type="text"
           fullWidth
         />
-
         <TextField
-          name="cpf"
           margin="dense"
-          id="cpf"
-          label="CPF"
-          onChange={handleChangeInput}
-          value={people.cpf}
+          id="fantasy_name"
+          name="fantasy_name"
+          label="Nome Fantasia"
           type="text"
+          onChange={handleChangeInput}
+          value={company.fantasy_name}
           fullWidth
         />
 
@@ -270,16 +269,6 @@ const EditPeople = () => {
         <TextField
           autoFocus
           margin="dense"
-          id="profissional"
-          name="profissional"
-          label="Profissional "
-          type="text"
-          onChange={handleChangeInput}
-          fullWidth
-        />
-        <TextField
-          autoFocus
-          margin="dense"
           id="objetivo"
           name="objetivo"
           label="Objetivos"
@@ -288,48 +277,7 @@ const EditPeople = () => {
           fullWidth
         />
 
-        <TextField
-          autoFocus
-          margin="dense"
-          id="curso"
-          name="curso"
-          label="Curso"
-          type="text"
-          onChange={handleChangeInput}
-          fullWidth
-        />
-        <TextField
-          autoFocus
-          margin="dense"
-          id="universidade"
-          name="universidade"
-          label="Universidade"
-          type="text"
-          onChange={handleChangeInput}
-          fullWidth
-        />
-
-        <TextField
-          autoFocus
-          margin="dense"
-          id="cargo"
-          name="cargo"
-          label="Cargo"
-          type="text"
-          onChange={handleChangeInput}
-          fullWidth
-        />
-
-        <TextField
-          autoFocus
-          margin="dense"
-          id="hobby"
-          name="hobby"
-          label="Hobby"
-          type="text"
-          onChange={handleChangeInput}
-          fullWidth
-        />
+       
       </TabPanel>
       <TabPanel value={value} index={4}>
         <input
@@ -364,4 +312,4 @@ const EditPeople = () => {
   );
 };
 
-export { EditPeople };
+export { EditCompany };
