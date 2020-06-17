@@ -20,13 +20,9 @@ export const companyService = {
     });
   },
   update: async (company) => {
-    return await API.put(
-      `company/${company.id}`,
-      {
-        headers: headers,
-      },
-      company
-    );
+    return await API.put(`company/`, company, {
+      headers: headers,
+    });
   },
   delete: async (id) => {
     return await API.delete(`company/${id}`, {

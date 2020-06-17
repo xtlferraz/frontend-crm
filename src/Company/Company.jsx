@@ -50,18 +50,14 @@ const Company = () => {
             isFreeAction: true,
             onClick: () => handleClick(),
           },
+          {
+            icon: 'edit',
+            tooltip: 'Edit User',
+            onClick: (event, rowData) =>
+              history.push(`/company/edit/${rowData.id}`),
+          },
         ]}
         editable={{
-          onRowUpdate: (company) =>
-            new Promise((resolve) => {
-              setTimeout(() => {
-                resolve();
-                if (company.name) {
-                  dispatch(companyActions.update(company));
-                }
-                dispatch(companyActions.getAll());
-              }, 600);
-            }),
           onRowDelete: (company) =>
             new Promise((resolve) => {
               setTimeout(() => {

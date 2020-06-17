@@ -20,6 +20,29 @@ export function companys(state = {}, action) {
       return {
         error: action.error,
       };
+    case companyConstants.GETBYID_REQUEST:
+      return {
+        loading: true,
+      };
+    case companyConstants.GETBYID_SUCCESS:
+      return {
+        items: action.companys.data.result,
+      };
+    case companyConstants.GETBYID_FAILURE:
+      return {
+        error: action.error,
+      };
+    case companyConstants.EDIT_REQUEST:
+      return {
+        loading: true,
+        company: action.id,
+      };
+    case companyConstants.EDIT_SUCCESS:
+      return action.company.data.result;
+    case companyConstants.EDIT_FAILURE:
+      return {
+        error: action.error,
+      };
     case companyConstants.DELETE_REQUEST:
       return {
         ...state,

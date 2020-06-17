@@ -16,7 +16,6 @@ import Divider from '@material-ui/core/Divider';
 import AppMenu from '../App/AppMenu';
 import PrimarySearchAppBar from './PrimarySearchAppBar';
 import { useHistory } from 'react-router-dom';
-import Alert from '@material-ui/lab/Alert';
 
 const drawerWidth = 240;
 const useStyles = makeStyles((theme) => ({

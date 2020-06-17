@@ -12,9 +12,8 @@ import Box from '@material-ui/core/Box';
 import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
 import PhotoCamera from '@material-ui/icons/PhotoCamera';
-import {
-  CssBaseline,
-} from '@material-ui/core';
+import Card from '@material-ui/core/Card';
+import { CssBaseline } from '@material-ui/core';
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
 
@@ -59,6 +58,18 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+const cardStyles = makeStyles({
+  root: {
+    minWidth: 275,
+  },
+  title: {
+    fontSize: 14,
+  },
+  pos: {
+    marginBottom: 12,
+  },
+});
+
 const EditPeople = () => {
   const peoples = useSelector((state) => state.peoples);
   const dispatch = useDispatch();
@@ -86,7 +97,7 @@ const EditPeople = () => {
 
   return (
     <>
-    <CssBaseline />
+      <CssBaseline />
       <AppBar position="static" color="default">
         <Tabs
           value={value}
@@ -105,260 +116,277 @@ const EditPeople = () => {
         </Tabs>
       </AppBar>
       <TabPanel value={value} index={0}>
+        <Card className={classes.root} variant="outlined">
+          <form className={classes.form} noValidate>
+            <TextField
+              autoFocus
+              margin="dense"
+              id="name"
+              name="name"
+              label="Nome"
+              type="text"
+              onChange={handleChangeInput}
+              value={people.name}
+              fullWidth
+            />
 
-        <TextField
-          autoFocus
-          margin="dense"
-          id="name"
-          name="name"
-          label="Nome"
-          type="text"
-          onChange={handleChangeInput}
-          value={people.name}
-          fullWidth
-        />
+            <TextField
+              name="short_name"
+              margin="dense"
+              id="short_name"
+              label="Nome Curto"
+              type="text"
+              onChange={handleChangeInput}
+              value={people.short_name}
+              fullWidth
+            />
 
-        <TextField
-          name="short_name"
-          margin="dense"
-          id="short_name"
-          label="Nome Curto"
-          type="text"
-          onChange={handleChangeInput}
-          value={people.short_name}
-          fullWidth
-        />
-
-        <TextField
-          name="cpf"
-          margin="dense"
-          id="cpf"
-          label="CPF"
-          onChange={handleChangeInput}
-          value={people.cpf}
-          type="text"
-          fullWidth
-        />
-
+            <TextField
+              name="cpf"
+              margin="dense"
+              id="cpf"
+              label="CPF"
+              onChange={handleChangeInput}
+              value={people.cpf}
+              type="text"
+              fullWidth
+            />
+          </form>
+        </Card>
       </TabPanel>
       <TabPanel value={value} index={1}>
-
-        <TextField
-          autoFocus
-          margin="dense"
-          id="cep"
-          name="cep"
-          label="Cep"
-          type="text"
-          onChange={handleChangeInput}
-          fullWidth
-        />
-        <TextField
-          autoFocus
-          margin="dense"
-          id="pais"
-          name="pais"
-          label="País"
-          type="text"
-          onChange={handleChangeInput}
-          fullWidth
-        />
-        <TextField
-          autoFocus
-          margin="dense"
-          id="uf"
-          name="uf"
-          label="Estado"
-          type="text"
-          onChange={handleChangeInput}
-          fullWidth
-        />
-        <TextField
-          autoFocus
-          margin="dense"
-          id="city"
-          name="city"
-          label="Cidade"
-          type="text"
-          onChange={handleChangeInput}
-          fullWidth
-        />
-        <TextField
-          autoFocus
-          margin="dense"
-          id="bairro"
-          name="bairro"
-          label="Bairro"
-          type="text"
-          onChange={handleChangeInput}
-          fullWidth
-        />
-        <TextField
-          autoFocus
-          margin="dense"
-          id="rua"
-          name="rua"
-          label="Rua"
-          type="text"
-          onChange={handleChangeInput}
-          fullWidth
-        />
-        <TextField
-          autoFocus
-          margin="dense"
-          id="complemento"
-          name="complemento"
-          label="Complemento"
-          type="text"
-          onChange={handleChangeInput}
-          fullWidth
-        />
+        <Card className={classes.root} variant="outlined">
+          <form className={classes.form} noValidate>
+            <TextField
+              autoFocus
+              margin="dense"
+              id="cep"
+              name="cep"
+              label="Cep"
+              type="text"
+              onChange={handleChangeInput}
+              fullWidth
+            />
+            <TextField
+              autoFocus
+              margin="dense"
+              id="pais"
+              name="pais"
+              label="País"
+              type="text"
+              onChange={handleChangeInput}
+              fullWidth
+            />
+            <TextField
+              autoFocus
+              margin="dense"
+              id="uf"
+              name="uf"
+              label="Estado"
+              type="text"
+              onChange={handleChangeInput}
+              fullWidth
+            />
+            <TextField
+              autoFocus
+              margin="dense"
+              id="city"
+              name="city"
+              label="Cidade"
+              type="text"
+              onChange={handleChangeInput}
+              fullWidth
+            />
+            <TextField
+              autoFocus
+              margin="dense"
+              id="bairro"
+              name="bairro"
+              label="Bairro"
+              type="text"
+              onChange={handleChangeInput}
+              fullWidth
+            />
+            <TextField
+              autoFocus
+              margin="dense"
+              id="rua"
+              name="rua"
+              label="Rua"
+              type="text"
+              onChange={handleChangeInput}
+              fullWidth
+            />
+            <TextField
+              autoFocus
+              margin="dense"
+              id="complemento"
+              name="complemento"
+              label="Complemento"
+              type="text"
+              onChange={handleChangeInput}
+              fullWidth
+            />
+          </form>
+        </Card>
       </TabPanel>
       <TabPanel value={value} index={2}>
-        <TextField
-          autoFocus
-          margin="dense"
-          id="rg"
-          name="rg"
-          label="Identidade"
-          type="text"
-          onChange={handleChangeInput}
-          fullWidth
-        />
-        <TextField
-          autoFocus
-          margin="dense"
-          id="orgao"
-          name="orgao"
-          label="Orgão Expedidor"
-          type="text"
-          onChange={handleChangeInput}
-          fullWidth
-        />
-        <TextField
-          autoFocus
-          margin="dense"
-          id="uf"
-          name="uf"
-          label="Estado"
-          type="text"
-          onChange={handleChangeInput}
-          fullWidth
-        />
+        <Card className={classes.root} variant="outlined">
+          <form className={classes.form} noValidate>
+            <TextField
+              autoFocus
+              margin="dense"
+              id="rg"
+              name="rg"
+              label="Identidade"
+              type="text"
+              onChange={handleChangeInput}
+              fullWidth
+            />
+            <TextField
+              autoFocus
+              margin="dense"
+              id="orgao"
+              name="orgao"
+              label="Orgão Expedidor"
+              type="text"
+              onChange={handleChangeInput}
+              fullWidth
+            />
+            <TextField
+              autoFocus
+              margin="dense"
+              id="uf"
+              name="uf"
+              label="Estado"
+              type="text"
+              onChange={handleChangeInput}
+              fullWidth
+            />
+          </form>
+        </Card>
       </TabPanel>
       <TabPanel value={value} index={3}>
-        <TextField
-          autoFocus
-          margin="dense"
-          id="resumo"
-          name="resumo"
-          label="Resumo"
-          type="text"
-          onChange={handleChangeInput}
-          fullWidth
-        />
-        <TextField
-          autoFocus
-          margin="dense"
-          id="sobre"
-          name="sobre"
-          label="Sobre"
-          type="text"
-          onChange={handleChangeInput}
-          fullWidth
-        />
-        <TextField
-          autoFocus
-          margin="dense"
-          id="profissional"
-          name="profissional"
-          label="Profissional "
-          type="text"
-          onChange={handleChangeInput}
-          fullWidth
-        />
-        <TextField
-          autoFocus
-          margin="dense"
-          id="objetivo"
-          name="objetivo"
-          label="Objetivos"
-          type="text"
-          onChange={handleChangeInput}
-          fullWidth
-        />
+        <Card className={classes.root} variant="outlined">
+          <form className={classes.form} noValidate>
+            <TextField
+              autoFocus
+              margin="dense"
+              id="resumo"
+              name="resumo"
+              label="Resumo"
+              type="text"
+              onChange={handleChangeInput}
+              fullWidth
+            />
+            <TextField
+              autoFocus
+              margin="dense"
+              id="sobre"
+              name="sobre"
+              label="Sobre"
+              type="text"
+              onChange={handleChangeInput}
+              fullWidth
+            />
+            <TextField
+              autoFocus
+              margin="dense"
+              id="profissional"
+              name="profissional"
+              label="Profissional "
+              type="text"
+              onChange={handleChangeInput}
+              fullWidth
+            />
+            <TextField
+              autoFocus
+              margin="dense"
+              id="objetivo"
+              name="objetivo"
+              label="Objetivos"
+              type="text"
+              onChange={handleChangeInput}
+              fullWidth
+            />
 
-        <TextField
-          autoFocus
-          margin="dense"
-          id="curso"
-          name="curso"
-          label="Curso"
-          type="text"
-          onChange={handleChangeInput}
-          fullWidth
-        />
-        <TextField
-          autoFocus
-          margin="dense"
-          id="universidade"
-          name="universidade"
-          label="Universidade"
-          type="text"
-          onChange={handleChangeInput}
-          fullWidth
-        />
+            <TextField
+              autoFocus
+              margin="dense"
+              id="curso"
+              name="curso"
+              label="Curso"
+              type="text"
+              onChange={handleChangeInput}
+              fullWidth
+            />
+            <TextField
+              autoFocus
+              margin="dense"
+              id="universidade"
+              name="universidade"
+              label="Universidade"
+              type="text"
+              onChange={handleChangeInput}
+              fullWidth
+            />
 
-        <TextField
-          autoFocus
-          margin="dense"
-          id="cargo"
-          name="cargo"
-          label="Cargo"
-          type="text"
-          onChange={handleChangeInput}
-          fullWidth
-        />
+            <TextField
+              autoFocus
+              margin="dense"
+              id="cargo"
+              name="cargo"
+              label="Cargo"
+              type="text"
+              onChange={handleChangeInput}
+              fullWidth
+            />
 
-        <TextField
-          autoFocus
-          margin="dense"
-          id="hobby"
-          name="hobby"
-          label="Hobby"
-          type="text"
-          onChange={handleChangeInput}
-          fullWidth
-        />
+            <TextField
+              autoFocus
+              margin="dense"
+              id="hobby"
+              name="hobby"
+              label="Hobby"
+              type="text"
+              onChange={handleChangeInput}
+              fullWidth
+            />
+          </form>
+        </Card>
       </TabPanel>
       <TabPanel value={value} index={4}>
-        <input
-          accept="image/*"
-          className={classes.input}
-          id="contained-button-file"
-          multiple
-          type="file"
-        />
-        <label htmlFor="contained-button-file">
-          <Button variant="contained" color="primary" component="span">
-            Upload
-          </Button>
-        </label>
-        <input
-          accept="image/*"
-          className={classes.input}
-          id="icon-button-file"
-          type="file"
-        />
-        <label htmlFor="icon-button-file">
-          <IconButton
-            color="primary"
-            aria-label="upload picture"
-            component="span"
-          >
-            <PhotoCamera />
-          </IconButton>
-        </label>
+        <Card className={classes.root} variant="outlined">
+          <form className={classes.form} noValidate>
+            <input
+              accept="image/*"
+              className={classes.input}
+              id="contained-button-file"
+              multiple
+              type="file"
+            />
+            <label htmlFor="contained-button-file">
+              <Button variant="contained" color="primary" component="span">
+                Upload
+              </Button>
+            </label>
+            <input
+              accept="image/*"
+              className={classes.input}
+              id="icon-button-file"
+              type="file"
+            />
+            <label htmlFor="icon-button-file">
+              <IconButton
+                color="primary"
+                aria-label="upload picture"
+                component="span"
+              >
+                <PhotoCamera />
+              </IconButton>
+            </label>
+          </form>
+        </Card>
       </TabPanel>
     </>
   );
