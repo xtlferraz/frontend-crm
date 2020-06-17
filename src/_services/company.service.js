@@ -20,7 +20,7 @@ export const companyService = {
     });
   },
   update: async (company) => {
-    return await API.put(`company/`, company, {
+    return await API.put(`company/update`, company, {
       headers: headers,
     });
   },

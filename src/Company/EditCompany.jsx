@@ -81,6 +81,7 @@ const EditCompany = () => {
 
   useEffect(async () => {
     const company = await companyService.getById(editId);
+    console.log(company);
     setCompanys(company.data.result);
   }, []);
 
@@ -251,6 +252,7 @@ const EditCompany = () => {
               variant="contained"
               color="primary"
               className={classes.submit}
+              onClick={handleSubmit}
             >
               Cadastrar
             </Button>
@@ -288,6 +290,7 @@ const EditCompany = () => {
               variant="contained"
               color="primary"
               className={classes.submit}
+              onClick={handleSubmit}
             >
               Cadastrar
             </Button>
@@ -347,6 +350,7 @@ const EditCompany = () => {
               variant="contained"
               color="primary"
               className={classes.submit}
+              onClick={handleSubmit}
             >
               Cadastrar
             </Button>
@@ -391,6 +395,7 @@ const EditCompany = () => {
               variant="contained"
               color="primary"
               className={classes.submit}
+              onClick={handleSubmit}
             >
               Cadastrar
             </Button>
