@@ -76,13 +76,18 @@ const App = () => {
             path="/company/edit/:editId"
             component={EditCompany}
           />
+          <PrivateRoute
+            exact
+            path="/people/edit/:editId"
+            component={EditPeople}
+          />
           <PrivateRoute exact path="/event" component={Event} />
           <PrivateRoute exact path="/group" component={Group} />
           <PrivateRoute exact path="/product" component={Product} />
           <PrivateRoute exact path="/service" component={Service} />
           <PrivateRoute exact path="/team" component={Team} />
           <PrivateRoute exact path="/people" component={People} />
-          <PrivateRoute exact path="/people/edit" component={EditPeople} />
+
           <PrivateRoute exact path="/lead" component={Lead} />
           <PrivateRoute exact path="/user" component={User} />
           <Redirect from="*" to="/" />

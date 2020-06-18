@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { peopleActions } from '../_actions';
+import { useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
@@ -14,6 +13,9 @@ import IconButton from '@material-ui/core/IconButton';
 import PhotoCamera from '@material-ui/icons/PhotoCamera';
 import Card from '@material-ui/core/Card';
 import { CssBaseline } from '@material-ui/core';
+import { peopleService } from '../_services';
+import { useParams } from 'react-router';
+import { peopleActions } from '../_actions';
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
 
@@ -56,43 +58,41 @@ const useStyles = makeStyles((theme) => ({
   input: {
     display: 'none',
   },
+  form: {
+    width: '100%', // Fix IE 11 issue.
+    marginTop: theme.spacing(3),
+    padding: '20px',
+  },
 }));
 
-const cardStyles = makeStyles({
-  root: {
-    minWidth: 275,
-  },
-  title: {
-    fontSize: 14,
-  },
-  pos: {
-    marginBottom: 12,
-  },
-});
-
 const EditPeople = () => {
-  const peoples = useSelector((state) => state.peoples);
-  const dispatch = useDispatch();
-
+  const { editId } = useParams();
   const classes = useStyles();
   const [value, setValue] = React.useState(0);
-  const [people, setPeople] = useState({
-    name: '',
-    short_name: '',
-    cpf: '',
-  });
-
+  const [peoples, setPeoples] = useState({});
+  const dispatch = useDispatch();
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
 
-  function handleChangeInput(e) {
+  const handleChangeInput = (e) => {
     const { name, value } = e.target;
-    setPeople((people) => ({ ...people, [name]: value }));
-  }
 
-  useEffect(() => {
-    dispatch(peopleActions.getAll());
+    setPeoples({ ...peoples, [name]: value });
+  };
+
+  const onChangeHandler = (e) => {
+    setPeoples({ ...peoples, ['logo']: e.target.files[0] || '' });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    dispatch(peopleActions.update(peoples));
+  };
+
+  useEffect(async () => {
+    const people = await peopleService.getById(editId);
+    setPeoples(people.data.result);
   }, []);
 
   return (
@@ -116,8 +116,8 @@ const EditPeople = () => {
         </Tabs>
       </AppBar>
       <TabPanel value={value} index={0}>
-        <Card className={classes.root} variant="outlined">
-          <form className={classes.form} noValidate>
+        <Card variant="outlined">
+          <form noValidate>
             <TextField
               autoFocus
               margin="dense"
@@ -126,7 +126,7 @@ const EditPeople = () => {
               label="Nome"
               type="text"
               onChange={handleChangeInput}
-              value={people.name}
+              value={peoples.name || ''}
               fullWidth
             />
 
@@ -137,7 +137,7 @@ const EditPeople = () => {
               label="Nome Curto"
               type="text"
               onChange={handleChangeInput}
-              value={people.short_name}
+              value={peoples.short_name || ''}
               fullWidth
             />
 
@@ -147,16 +147,26 @@ const EditPeople = () => {
               id="cpf"
               label="CPF"
               onChange={handleChangeInput}
-              value={people.cpf}
+              value={peoples.cpf || ''}
               type="text"
               fullWidth
             />
+            <Button
+              type="submit"
+              fullWidth
+              variant="contained"
+              color="primary"
+              className={classes.submit}
+              onClick={handleSubmit}
+            >
+              Cadastrar
+            </Button>
           </form>
         </Card>
       </TabPanel>
       <TabPanel value={value} index={1}>
-        <Card className={classes.root} variant="outlined">
-          <form className={classes.form} noValidate>
+        <Card variant="outlined">
+          <form noValidate>
             <TextField
               autoFocus
               margin="dense"
@@ -165,6 +175,7 @@ const EditPeople = () => {
               label="Cep"
               type="text"
               onChange={handleChangeInput}
+              value={peoples.cep || ''}
               fullWidth
             />
             <TextField
@@ -175,6 +186,7 @@ const EditPeople = () => {
               label="País"
               type="text"
               onChange={handleChangeInput}
+              value={peoples.country || ''}
               fullWidth
             />
             <TextField
@@ -185,6 +197,7 @@ const EditPeople = () => {
               label="Estado"
               type="text"
               onChange={handleChangeInput}
+              value={peoples.state || ''}
               fullWidth
             />
             <TextField
@@ -195,6 +208,7 @@ const EditPeople = () => {
               label="Cidade"
               type="text"
               onChange={handleChangeInput}
+              value={peoples.city || ''}
               fullWidth
             />
             <TextField
@@ -205,6 +219,7 @@ const EditPeople = () => {
               label="Bairro"
               type="text"
               onChange={handleChangeInput}
+              value={peoples.neighborhood || ''}
               fullWidth
             />
             <TextField
@@ -215,6 +230,7 @@ const EditPeople = () => {
               label="Rua"
               type="text"
               onChange={handleChangeInput}
+              value={peoples.address || ''}
               fullWidth
             />
             <TextField
@@ -225,14 +241,25 @@ const EditPeople = () => {
               label="Complemento"
               type="text"
               onChange={handleChangeInput}
+              value={peoples.complement || ''}
               fullWidth
             />
+            <Button
+              type="submit"
+              fullWidth
+              variant="contained"
+              color="primary"
+              className={classes.submit}
+              onClick={handleSubmit}
+            >
+              Cadastrar
+            </Button>
           </form>
         </Card>
       </TabPanel>
       <TabPanel value={value} index={2}>
-        <Card className={classes.root} variant="outlined">
-          <form className={classes.form} noValidate>
+        <Card variant="outlined">
+          <form noValidate>
             <TextField
               autoFocus
               margin="dense"
@@ -241,6 +268,7 @@ const EditPeople = () => {
               label="Identidade"
               type="text"
               onChange={handleChangeInput}
+              value={peoples.rg || ''}
               fullWidth
             />
             <TextField
@@ -251,24 +279,36 @@ const EditPeople = () => {
               label="Orgão Expedidor"
               type="text"
               onChange={handleChangeInput}
+              value={peoples.rg || ''}
               fullWidth
             />
             <TextField
               autoFocus
               margin="dense"
-              id="uf"
-              name="uf"
-              label="Estado"
+              id="cnh"
+              name="cnh"
+              label="CNH"
               type="text"
               onChange={handleChangeInput}
+              value={peoples.cnh || ''}
               fullWidth
             />
+            <Button
+              type="submit"
+              fullWidth
+              variant="contained"
+              color="primary"
+              className={classes.submit}
+              onClick={handleSubmit}
+            >
+              Cadastrar
+            </Button>
           </form>
         </Card>
       </TabPanel>
       <TabPanel value={value} index={3}>
-        <Card className={classes.root} variant="outlined">
-          <form className={classes.form} noValidate>
+        <Card variant="outlined">
+          <form noValidate>
             <TextField
               autoFocus
               margin="dense"
@@ -277,6 +317,7 @@ const EditPeople = () => {
               label="Resumo"
               type="text"
               onChange={handleChangeInput}
+              value={peoples.resume || ''}
               fullWidth
             />
             <TextField
@@ -287,6 +328,7 @@ const EditPeople = () => {
               label="Sobre"
               type="text"
               onChange={handleChangeInput}
+              value={peoples.about || ''}
               fullWidth
             />
             <TextField
@@ -297,6 +339,7 @@ const EditPeople = () => {
               label="Profissional "
               type="text"
               onChange={handleChangeInput}
+              value={peoples.office || ''}
               fullWidth
             />
             <TextField
@@ -307,6 +350,7 @@ const EditPeople = () => {
               label="Objetivos"
               type="text"
               onChange={handleChangeInput}
+              value={peoples.object || ''}
               fullWidth
             />
 
@@ -318,6 +362,7 @@ const EditPeople = () => {
               label="Curso"
               type="text"
               onChange={handleChangeInput}
+              value={peoples.formation || ''}
               fullWidth
             />
             <TextField
@@ -328,6 +373,7 @@ const EditPeople = () => {
               label="Universidade"
               type="text"
               onChange={handleChangeInput}
+              value={peoples.institution || ''}
               fullWidth
             />
 
@@ -339,6 +385,7 @@ const EditPeople = () => {
               label="Cargo"
               type="text"
               onChange={handleChangeInput}
+              value={peoples.office || ''}
               fullWidth
             />
 
@@ -350,14 +397,25 @@ const EditPeople = () => {
               label="Hobby"
               type="text"
               onChange={handleChangeInput}
+              value={peoples.hobby || ''}
               fullWidth
             />
+            <Button
+              type="submit"
+              fullWidth
+              variant="contained"
+              color="primary"
+              className={classes.submit}
+              onClick={handleSubmit}
+            >
+              Cadastrar
+            </Button>
           </form>
         </Card>
       </TabPanel>
       <TabPanel value={value} index={4}>
-        <Card className={classes.root} variant="outlined">
-          <form className={classes.form} noValidate>
+        <Card variant="outlined">
+          <form noValidate>
             <input
               accept="image/*"
               className={classes.input}
@@ -385,6 +443,16 @@ const EditPeople = () => {
                 <PhotoCamera />
               </IconButton>
             </label>
+            <Button
+              type="submit"
+              fullWidth
+              variant="contained"
+              color="primary"
+              className={classes.submit}
+              onClick={handleSubmit}
+            >
+              Cadastrar
+            </Button>
           </form>
         </Card>
       </TabPanel>

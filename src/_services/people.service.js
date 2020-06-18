@@ -20,13 +20,9 @@ export const peopleService = {
     });
   },
   update: async (people) => {
-    return await API.put(
-      `people/${people.id}`,
-      {
-        headers: headers,
-      },
-      people
-    );
+    return await API.put(`people/update`, people, {
+      headers: headers,
+    });
   },
   delete: async (id) => {
     return await API.delete(`people/${id}`, {

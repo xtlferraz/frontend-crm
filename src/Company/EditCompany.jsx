@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useCallback } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { companyActions } from '../_actions';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
@@ -81,7 +81,6 @@ const EditCompany = () => {
 
   useEffect(async () => {
     const company = await companyService.getById(editId);
-    console.log(company);
     setCompanys(company.data.result);
   }, []);
 
